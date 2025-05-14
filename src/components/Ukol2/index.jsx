@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { CoinButton } from "./CoinButton";
+import { useState } from 'react';
+import { CoinButton } from './CoinButton';
 import './style.css';
 
 /*
@@ -7,7 +7,7 @@ import './style.css';
     tlačítko chceme do celé částky přidat hodnotu mince.
 
   Krok 1: Do komponenty `CoinButton` přidejte prop `onCoinClick`, která bude očekávat 
-    funkci, která se zavolá při kliknutí na tlačítko. Komponenta funkci zavolá s hodntou své 
+    funkci, která se zavolá při kliknutí na tlačítko. Komponenta funkci zavolá s hodnotou své 
     prop `value`.
 
   Krok 2: V komponentě `Ukol2` založte funkci `handleCoinClick`, která bude mít jeden 
@@ -19,19 +19,23 @@ import './style.css';
 
 export const Ukol2 = () => {
   const [amount, setAmount] = useState(0);
-  
+
+  const handleCoinClick = (value) => {
+    setAmount(amount + value);
+  };
+
   return (
     <>
       <p>
         <strong>Částka: {amount} Kč</strong>
       </p>
       <div className="button-group">
-        <CoinButton value={1} />
-        <CoinButton value={2} />
-        <CoinButton value={5} />
-        <CoinButton value={10} />
-        <CoinButton value={20} />
-        <CoinButton value={50} />
+        <CoinButton onCoinClick={handleCoinClick} value={1} />
+        <CoinButton onCoinClick={handleCoinClick} value={2} />
+        <CoinButton onCoinClick={handleCoinClick} value={5} />
+        <CoinButton onCoinClick={handleCoinClick} value={10} />
+        <CoinButton onCoinClick={handleCoinClick} value={20} />
+        <CoinButton onCoinClick={handleCoinClick} value={50} />
       </div>
     </>
   );
